@@ -36,13 +36,27 @@ gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 
 sudo apt install openssh-server -y
-#sudo systemctl status ssh
-# TODO config and lockdown ssh
-# sudo systemctl restart ssh
+echo '# OSINT VM SSH UPDATES' | sudo tee -a /etc/vsftpd.conf
+echo 'PermitEmptyPassecho '# OSINT VM UPDATES' | sudo tee -a /etc/vsftpd.conf
+echo 'PermitRootLogin no' | sudo tee -a /etc/ssh/sshd_config
+echo 'Protocol 2' | sudo tee -a /etc/ssh/sshd_config
+echo 'ClientAliveInterval 300' | sudo tee -a /etc/ssh/sshd_config
+echo 'MaxAuthTries 3' | sudo tee -a /etc/ssh/sshd_config
+echo 'LoginGraceTime 20' | sudo tee -a /etc/ssh/sshd_config
+echo 'ChallengeResponseAuthentication no' | sudo tee -a /etc/ssh/sshd_config
+echo 'KerberosAuthentication no' | sudo tee -a /etc/ssh/sshd_config
+echo 'GSSAPIAuthentication no' | sudo tee -a /etc/ssh/sshd_config
+echo 'X11Forwarding no' | sudo tee -a /etc/ssh/sshd_config
+echo 'PermitUserEnvironment no' | sudo tee -a /etc/ssh/sshd_config
+echo 'AllowAgentForwarding no' | sudo tee -a /etc/ssh/sshd_config
+echo 'AllowTcpForwarding no' | sudo tee -a /etc/ssh/sshd_config
+echo 'PermitTunnel no' | sudo tee -a /etc/ssh/sshd_config
+echo 'PrintLastLog yes' | sudo tee -a /etc/ssh/sshd_config
+sudo service sshd reload
 
 sudo apt install vsftpd -y
 sudo openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -subj "/C=US/ST=Denial/L=Springfield/O=osint/CN=osint.local" -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
-echo '# OSINT VM UPDATES' | sudo tee -a /etc/vsftpd.conf
+echo '# OSINT VM FTP UPDATES' | sudo tee -a /etc/vsftpd.conf
 echo 'write_enable=YES' | sudo tee -a /etc/vsftpd.conf
 sudo sed -i '/rsa_cert_file/s/^/#/' /etc/vsftpd.conf
 sudo sed -i '/rsa_private_key_file/s/^/#/' /etc/vsftpd.conf
