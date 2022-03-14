@@ -27,7 +27,7 @@ echo '#####################' >> ~/.bashrc
 # UPDATE UBUNTU GLOBAL SETTINGS
 gsettings set org.gnome.system.location enabled false
 gsettings set org.gnome.desktop.screensaver lock-enabled false
-gsettings set org.gnome.ControlCenter last-panel 'removable-media'
+gsettings set org.gnome.ControlCenter last-panel 'diagnostics'
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
@@ -35,14 +35,23 @@ gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 
-sudo apt install openssh-server
-sudo systemctl status ssh
+sudo apt install openssh-server -y
+#sudo systemctl status ssh
 # TODO config and lockdown ssh
 # sudo systemctl restart ssh
 
-sudo apt install vsftpd
-sudo systemctl status vsftpd
-# TODO config and lockdown ftp
-# /etc/vsftpd.conf
-# /etc/ssh/sshd_config
-# sudo systemctl restart vsftpd
+sudo apt install vsftpd -y
+mkdir -p /home/$USER/ftp
+sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+echo '# OSINT VM UPDATES' | sudo tee -a /etc/vsftpd.conf
+echo 'write_enable=YES' | sudo tee -a /etc/vsftpd.conf
+echo 'chroot_local_user=YES' | sudo tee -a /etc/vsftpd.conf
+echo 'user_sub_token=$USER' | sudo tee -a /etc/vsftpd.conf
+echo 'local_root=/home/$USER/ftp' | sudo tee -a /etc/vsftpd.conf
+sudo sed -i '/rsa_cert_file/s/^/#/' /etc/vsftpd.conf
+sudo sed -i '/rsa_private_key_file/s/^/#/' /etc/vsftpd.conf
+sudo sed -i '/ssl_enable/s/^/#/' /etc/vsftpd.conf
+echo 'rsa_cert_file=/etc/ssl/private/vsftpd.pem' | sudo tee -a /etc/vsftpd.conf
+echo 'rsa_private_key_file=/etc/ssl/private/vsftpd.pem' | sudo tee -a /etc/vsftpd.conf
+echo 'ssl_enable=YES' | sudo tee -a /etc/vsftpd.conf
+sudo systemctl restart vsftpd
