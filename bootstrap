@@ -31,6 +31,18 @@ gsettings set org.gnome.ControlCenter last-panel 'removable-media'
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-gsettings set org.gnome.desktop.session idle-delay uint32 0
-gsettings set org.gnome.desktop.media-handle autorun-x-content-start-app @as []
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
+
+sudo apt install openssh-server
+sudo systemctl status ssh
+# TODO config and lockdown ssh
+# sudo systemctl restart ssh
+
+sudo apt install vsftpd
+sudo systemctl status vsftpd
+# TODO config and lockdown ftp
+# /etc/vsftpd.conf
+# /etc/ssh/sshd_config
+# sudo systemctl restart vsftpd
