@@ -36,8 +36,8 @@ gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 
 sudo apt install openssh-server -y
-echo '# OSINT VM SSH UPDATES' | sudo tee -a /etc/vsftpd.conf
-echo 'PermitEmptyPassecho '# OSINT VM UPDATES' | sudo tee -a /etc/vsftpd.conf
+echo '# OSINT VM SSH UPDATES' | sudo tee -a /etc/ssh/sshd_config
+echo 'PermitEmptyPasswords no' | sudo tee -a /etc/ssh/sshd_config
 echo 'PermitRootLogin no' | sudo tee -a /etc/ssh/sshd_config
 echo 'Protocol 2' | sudo tee -a /etc/ssh/sshd_config
 echo 'ClientAliveInterval 300' | sudo tee -a /etc/ssh/sshd_config
