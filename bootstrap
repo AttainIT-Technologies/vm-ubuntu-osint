@@ -45,9 +45,6 @@ mkdir -p /home/$USER/ftp
 sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 echo '# OSINT VM UPDATES' | sudo tee -a /etc/vsftpd.conf
 echo 'write_enable=YES' | sudo tee -a /etc/vsftpd.conf
-echo 'chroot_local_user=YES' | sudo tee -a /etc/vsftpd.conf
-echo 'user_sub_token=$USER' | sudo tee -a /etc/vsftpd.conf
-echo 'local_root=/home/$USER/ftp' | sudo tee -a /etc/vsftpd.conf
 sudo sed -i '/rsa_cert_file/s/^/#/' /etc/vsftpd.conf
 sudo sed -i '/rsa_private_key_file/s/^/#/' /etc/vsftpd.conf
 sudo sed -i '/ssl_enable/s/^/#/' /etc/vsftpd.conf
