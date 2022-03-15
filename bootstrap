@@ -32,6 +32,7 @@ gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 
+# INSTALL SSH SERVER
 sudo apt install openssh-server -y
 echo '# OSINT VM SSH UPDATES' | sudo tee -a /etc/ssh/sshd_config
 echo 'PermitEmptyPasswords no' | sudo tee -a /etc/ssh/sshd_config
@@ -51,6 +52,7 @@ echo 'PermitTunnel no' | sudo tee -a /etc/ssh/sshd_config
 echo 'PrintLastLog yes' | sudo tee -a /etc/ssh/sshd_config
 sudo service sshd reload
 
+# INSTALL FTP SERVER
 sudo apt install vsftpd -y
 sudo openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -subj "/C=US/ST=Denial/L=Springfield/O=osint/CN=osint.local" -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 echo '# OSINT VM FTP UPDATES' | sudo tee -a /etc/vsftpd.conf
@@ -62,3 +64,13 @@ echo 'rsa_cert_file=/etc/ssl/private/vsftpd.pem' | sudo tee -a /etc/vsftpd.conf
 echo 'rsa_private_key_file=/etc/ssl/private/vsftpd.pem' | sudo tee -a /etc/vsftpd.conf
 echo 'ssl_enable=YES' | sudo tee -a /etc/vsftpd.conf
 sudo systemctl restart vsftpd
+
+# INSTALL MOZILLA FIREFOX ADDONS
+firefox
+sleep 20
+FF_RELEASE=`find /home/$USER/.mozilla/firefox -maxdepth 1 -type d | grep default-release`
+FF_EXT=$FF_RELEASE'/extensions'
+mkdir -p $FF_EXT
+cd extensions
+wget https://addons.mozilla.org/firefox/downloads/file/3421533/startpagecom_private_search_engine-1.3.0-fx.xpi -O $FF_EXT/{20fc2e06-e3e4-4b2b-812b-ab431220cada}.xpi
+wget https://addons.mozilla.org/firefox/downloads/file/993242/exif_viewer-3.7.5-an+fx.xpi -) $FF_EXT/exif_viewer@mozilla.doslash.org.xpi
