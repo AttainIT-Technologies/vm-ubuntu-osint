@@ -66,8 +66,7 @@ echo 'ssl_enable=YES' | sudo tee -a /etc/vsftpd.conf
 sudo systemctl restart vsftpd
 
 # INSTALL MOZILLA FIREFOX ADDONS
-firefox
-sleep 20
+firefox -CreateProfile default-release
 FF_RELEASE=`find /home/$USER/.mozilla/firefox -maxdepth 1 -type d | grep default-release`
 FF_EXT=$FF_RELEASE'/extensions'
 mkdir -p $FF_EXT
