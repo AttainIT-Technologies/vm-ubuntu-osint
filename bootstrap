@@ -9,9 +9,6 @@
 # SCRIPT DEVELOPMENT IN PROGRESS
 ################################
 
-# UPDATE UBUNTU
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
-
 # INSTALL PACKAGES
 sudo apt install curl -y
 sudo apt install jq -y

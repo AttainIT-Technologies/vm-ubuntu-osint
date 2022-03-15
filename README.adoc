@@ -11,5 +11,6 @@ $ cd ~
 $ sudo apt install git -y
 $ git clone https://github.com/AttainIT-Technologies/vm-ubuntu-osint.git bin
 $ cd bin
+$ ./ubuntu-upgrade
 $ ./bootstrap
 ```
