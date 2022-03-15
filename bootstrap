@@ -76,4 +76,4 @@ wget https://addons.mozilla.org/firefox/downloads/file/993242/exif_viewer-3.7.5-
 wget https://addons.mozilla.org/firefox/downloads/file/3907697/firefox_multi_account_containers-8.0.6-fx.xpi -O $FF_EXT/@testpilot-containers.xpi
 wget https://addons.mozilla.org/firefox/downloads/file/3809748/https_everywhere-2021.7.13-an+fx.xpi -O $FF_EXT/https-everywhere@eff.org.xpi
 wget https://addons.mozilla.org/firefox/downloads/file/3872283/privacy_badger-2021.11.23.1-an+fx.xpi -O $FF_EXT/jid1-MnnxcxisBPnSXQ@jetpack.xpi
-wget https://addons.mozilla.org/firefox/downloads/file/3769639/user_agent_switcher_and_manager-0.4.7.1-an+fx.xpi -O $FF_EXT{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}.xpi
+wget https://addons.mozilla.org/firefox/downloads/file/3769639/user_agent_switcher_and_manager-0.4.7.1-an+fx.xpi -O $FF_EXT/{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}.xpi
