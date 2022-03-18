@@ -105,4 +105,4 @@ wget https://addons.mozilla.org/firefox/downloads/file/3769639/user_agent_switch
 wget https://addons.mozilla.org/firefox/downloads/file/3860157/tineye_reverse_image_search-1.5.2-fx.xpi -O $FF_EXT/tineye@ideeinc.com.xpi
 
 # INSTALL MOZILLA FIREFOX USER PREFERENCES
-cp ff_user.js $FF_RELEASE/user.js
+cp ff-user.js $FF_RELEASE/user.js
