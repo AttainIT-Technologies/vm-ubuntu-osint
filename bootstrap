@@ -103,3 +103,6 @@ wget https://addons.mozilla.org/firefox/downloads/file/3809748/https_everywhere-
 wget https://addons.mozilla.org/firefox/downloads/file/3872283/privacy_badger-2021.11.23.1-an+fx.xpi -O $FF_EXT/jid1-MnnxcxisBPnSXQ@jetpack.xpi
 wget https://addons.mozilla.org/firefox/downloads/file/3769639/user_agent_switcher_and_manager-0.4.7.1-an+fx.xpi -O $FF_EXT/{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}.xpi
 wget https://addons.mozilla.org/firefox/downloads/file/3860157/tineye_reverse_image_search-1.5.2-fx.xpi -O $FF_EXT/tineye@ideeinc.com.xpi
+
+# INSTALL MOZILLA FIREFOX USER PREFERENCES
+cp ff_user.js $FF_RELEASE/user.js
