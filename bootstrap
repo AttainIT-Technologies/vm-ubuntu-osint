@@ -10,10 +10,12 @@
 ################################
 
 # INSTALL PACKAGES
+
 sudo apt install curl -y
 sudo apt install jq -y
 
 # BASHRC UPDATES
+
 echo '#####################' >> ~/.bashrc
 echo '# OSINT UPDATES BELOW' >> ~/.bashrc
 echo 'OSINT_BIN=~/bin; export OSINT_BIN' >> ~/.bashrc
@@ -22,6 +24,7 @@ echo '# OSINT UPDATES ABOVE' >> ~/.bashrc
 echo '#####################' >> ~/.bashrc
 
 # UPDATE UBUNTU GLOBAL SETTINGS
+
 gsettings set org.gnome.system.location enabled false
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.ControlCenter last-panel 'diagnostics'
@@ -33,6 +36,7 @@ gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 
 # INSTALL SSH SERVER
+
 sudo apt install openssh-server -y
 echo '# OSINT VM SSH UPDATES' | sudo tee -a /etc/ssh/sshd_config
 echo 'PermitEmptyPasswords no' | sudo tee -a /etc/ssh/sshd_config
@@ -53,6 +57,7 @@ echo 'PrintLastLog yes' | sudo tee -a /etc/ssh/sshd_config
 sudo service sshd reload
 
 # INSTALL FTP SERVER
+
 sudo apt install vsftpd -y
 sudo openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -subj "/C=US/ST=Denial/L=Springfield/O=osint/CN=osint.local" -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 echo '# OSINT VM FTP UPDATES' | sudo tee -a /etc/vsftpd.conf
@@ -65,12 +70,28 @@ echo 'rsa_private_key_file=/etc/ssl/private/vsftpd.pem' | sudo tee -a /etc/vsftp
 echo 'ssl_enable=YES' | sudo tee -a /etc/vsftpd.conf
 sudo systemctl restart vsftpd
 
+# CREATE MOZILLA FIREFOX PROFILE
+# This is a huge hack.  Issues creating profile with cli so allow the app to create its own.
+# After the app creates the profile, set the default to account for firefox installation oddity.
+# Revisit in the future; The hack works well enough for now...
+
+sudo apt install xvfb
+xvfb-run firefox &
+sleep 5
+sudo kill -9 `ps -ef | grep firefox | awk {'print $2'}`
+
+FF_USER_DIR=/home/$USER/.mozilla/firefox
+PROFILES_INI=$FF_USER_DIR/profiles.ini
+
+sed -i '/Default=1/d' $PROFILES_INI
+sed -i '/^\[General\]/i Default=1' $PROFILES_INI
+sed -i '/General/{x;p;x;}' $PROFILES_INI
+sed -n '/Default=1/{x;d;};1h;1!{x;p;}' $PROFILES_INI > $FF_USER_DIR/temp.ini
+rm $PROFILES_INI
+cp $FF_USER_DIR/temp.ini $PROFILES_INI
+rm $FF_USER_DIR/temp.ini
+
 # INSTALL MOZILLA FIREFOX ADDONS
-# This is a huge hack.  Issues creating profile so allow the app to create its own.
-# Revisit in the future, the hack works well enough for now...
-#firefox -CreateProfile default-release
-firefox &
-sleep 20
 FF_RELEASE=`find /home/$USER/.mozilla/firefox -maxdepth 1 -type d | grep default-release`
 FF_EXT=$FF_RELEASE'/extensions'
 mkdir -p $FF_EXT
