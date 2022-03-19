@@ -22,3 +22,4 @@ user_pref("media.navigator.enabled", false);
 // Disable Battery API
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 user_pref("dom.battery.enabled", false);
+
