@@ -11,8 +11,8 @@ user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", 
 // Home Page and New Windows = blank page
 // New Tabs = blank page
 user_pref("browser.newtabpage.enabled", false);
-user_pref("browser.newtab.url", "about:blank")
-user_pref("browser.startup.homepage", "about:blank")
+user_pref("browser.newtab.url", "about:blank");
+user_pref("browser.startup.homepage", "about:blank");
 
 // Settings | Privacy & Security
 // Set Enhanced Tracking Protection = Strict
