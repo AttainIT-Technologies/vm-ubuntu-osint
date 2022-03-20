@@ -22,6 +22,31 @@ user_pref("privacy.annotate_channels.strict_list.enabled", true);
 user_pref("privacy.partition.network_state.ocsp_cache", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
+// Delete cookies and site date when Firefox is closed
+user_pref("network.cookie.lifetimePolicy", 2);
+// Logins and Passwords
+user_pref("signon.rememberSignons", false);
+user_pref("signon.management.page.breach-alerts.enabled", false);
+// Address Bar - Firefox Suggest
+user_pref("browser.urlbar.suggest.bookmark", false);
+user_pref("browser.urlbar.suggest.engines", false);
+user_pref("browser.urlbar.suggest.history", false);
+user_pref("browser.urlbar.suggest.openpage", false);
+user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+user_pref("browser.urlbar.suggest.topsites", false);
+// Location - Block new requests asking to access your location
+user_pref("permissions.default.geo", 2);
+// Camera - Block new requests asking to access your camera
+user_pref("permissions.default.camera", 2);
+// Microphone - Block new requests asking to access your microphone
+user_pref("permissions.default.microphone", 2);
+// Opt Out
+user_pref("app.shield.optoutstudies.enabled", false);
+user_pref("datareporting.healthreport.uploadEnabled", false);
+// Block Deceptive Content
+user_pref("browser.safebrowsing.malware.enabled", false);
+user_pref("browser.safebrowsing.phishing.enabled", false);
 
 // Disable Geolocation
 // https://www.mozilla.org/en-US/firefox/geolocation/
