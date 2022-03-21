@@ -75,7 +75,7 @@ sudo systemctl restart vsftpd
 # After the app creates the profile, set the default to account for firefox installation oddity.
 # Revisit in the future; The hack works well enough for now...
 
-sudo apt install xvfb
+sudo apt install xvfb -y
 xvfb-run firefox &
 sleep 5
 sudo kill -9 `ps -ef | grep firefox | awk {'print $2'}`
@@ -106,3 +106,10 @@ wget https://addons.mozilla.org/firefox/downloads/file/3860157/tineye_reverse_im
 
 # INSTALL MOZILLA FIREFOX USER PREFERENCES
 cp ff-user.js $FF_RELEASE/user.js
+
+# INSTALL TOR
+sudo apt install apt-transport-https -y
+wget -q -O - https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list
+sudo apt update
+sudo apt install tor deb.torproject.org-keyring torbrowser-launcher -y
