@@ -2,9 +2,23 @@
 
 == Overview
 
-AttainIT Technologies basic setup for a new Ubuntu OSINT Virtual Machine.  More to come...
+AttainIT Technologies basic setup for a new Ubuntu OSINT Virtual Machine.
+
+== Virtual Machine Setup
+
+A virtual machine can be created on any viable hypervisor; we have documented 
+a solution that uses Microsoft Hyper-V at the following locations:
+* https://blog.attainittech.com/2022/03/installing-ubuntu-on-hyper-v/
+* https://github.com/AttainIT-Technologies/vm-ubuntu-osint/wiki
+
+Note that using a virtual machine is not required.  This repo will work the same
+on any 20.04 LTS installation.  That being said, these workstations are meant to be
+disposable so are built in a way as to be easily recreated.
 
 == Installation
+
+After your vm is built, issue the following commands to clone the repo, upgrade the
+operating system, and finally apply the setup.
 
 ```
 $ cd ~
