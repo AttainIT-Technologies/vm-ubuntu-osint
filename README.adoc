@@ -8,6 +8,7 @@ AttainIT Technologies basic setup for a new Ubuntu OSINT Virtual Machine.
 
 A virtual machine can be created on any viable hypervisor; we have documented 
 a solution that uses Microsoft Hyper-V at the following locations:
+
 * https://blog.attainittech.com/2022/03/installing-ubuntu-on-hyper-v/
 * https://github.com/AttainIT-Technologies/vm-ubuntu-osint/wiki
 
