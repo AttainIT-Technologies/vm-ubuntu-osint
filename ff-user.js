@@ -47,7 +47,9 @@ user_pref("datareporting.healthreport.uploadEnabled", false);
 // Block Deceptive Content
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
-
+// Set "Do Not Track" to always
+user_pref("privacy.donottrackheader.enabled", true);
+ 
 // Disable Geolocation
 // https://www.mozilla.org/en-US/firefox/geolocation/
 user_pref("geo.enabled", false);
@@ -69,3 +71,18 @@ user_pref("media.navigator.enabled", false);
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 user_pref("dom.battery.enabled", false);
 
+
+// Fingerprinting
+// https://restoreprivacy.com/browser-fingerprinting/
+user_pref("privacy.resistFingerprinting", true);
+user_pref("webgl.disabled", true);
+user_pref("privacy.firstparty.isolate", true);
+user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
+user_pref("privacy.trackingprotection.cryptomining.enabled", true);
+user_pref("privacy.trackingprotection.enabled", true);
+
+// Miscellaneous
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.prefetch-next", false);
+user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("media.eme.enabled", false);
