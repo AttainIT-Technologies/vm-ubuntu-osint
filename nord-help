@@ -62,6 +62,10 @@ parse_params() {
 parse_params "$@"
 setup_colors
 
-msg "${RED}Connections"
+msg "${RED}Connection Status${NOFORMAT}"
+msg "    nordvpn status"
+msg ""
+
+msg "${RED}Connections${NOFORMAT}"
 msg "    nordvpn connect"
 msg "    nordvpn disconnect"
