@@ -123,6 +123,9 @@ cd ~
 mkdir -p /apps
 cd apps
 
+# INSTALL JAVA
+sudo apt-get install openjdk-11-jdk -y
+
 # INSTALL PIP3
 sudo apt install python3-pip -y
 
@@ -131,6 +134,9 @@ sudo apt install whois -y
 
 # INSTALL NMAP
 sudo apt install nmap -y
+
+# INSTALL DMITRY
+sudo apt-get install dmitry
 
 # INSTALL THEHARVESTER
 # https://github.com/laramies/theHarvester
@@ -165,3 +171,56 @@ cd dnstwist
 sudo apt-get install libgeoip-dev -y
 pip3 install -r requirements.txt
 
+# INSTALL RECON-NG
+# https://github.com/lanmaster53/recon-ng
+
+cd ~/apps
+git clone https://github.com/lanmaster53/recon-ng.git
+cd recon-ng
+pip3 install -r REQUIREMENTS
+
+# INSTALL TRIOP
+# https://github.com/NettleSec/TriOp
+cd ~/apps
+git clone https://github.com/NettleSec/TriOp
+cd TriOp
+pip3 install -r requirements.txt
+
+# INSTALL KNOCK
+# https://github.com/guelfoweb/knock
+
+cd ~/apps
+git clone https://github.com/guelfoweb/knock.git
+cd knock
+pip3 install -r requirements.txt
+
+# INSTALL SHERLOCK
+# https://github.com/sherlock-project/sherlock
+
+cd ~/apps
+git clone https://github.com/sherlock-project/sherlock.git
+cd sherlock
+pip3 install -r requirements.txt
+
+# INSTALL RECONDOG
+# https://github.com/s0md3v/ReconDog
+
+cd ~/apps
+git clone https://github.com/s0md3v/ReconDog.git
+cd ReconDog
+pip3 install -r requirements.txt
+
+# INSTALL SHODAN
+# https://github.com/achillean/shodan-python
+
+cd ~/apps
+pip3 install shodan
+
+# INSTALL MALTEGO
+# https://www.maltego.com/
+
+cd ~/apps
+mkdir maltego
+cd maltego
+wget https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.3.0.deb
+sudo dpkg -i Maltego.v4.3.0.deb
