@@ -92,6 +92,7 @@ cp $FF_USER_DIR/temp.ini $PROFILES_INI
 rm $FF_USER_DIR/temp.ini
 
 # INSTALL MOZILLA FIREFOX ADDONS
+
 FF_RELEASE=`find /home/$USER/.mozilla/firefox -maxdepth 1 -type d | grep default-release`
 FF_EXT=$FF_RELEASE'/extensions'
 mkdir -p $FF_EXT
@@ -105,11 +106,62 @@ wget https://addons.mozilla.org/firefox/downloads/file/3769639/user_agent_switch
 wget https://addons.mozilla.org/firefox/downloads/file/3860157/tineye_reverse_image_search-1.5.2-fx.xpi -O $FF_EXT/tineye@ideeinc.com.xpi
 
 # INSTALL MOZILLA FIREFOX USER PREFERENCES
+
 cp ff-user.js $FF_RELEASE/user.js
 
 # INSTALL TOR
+
 sudo apt install apt-transport-https -y
 wget -q -O - https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list
 sudo apt update
 sudo apt install tor deb.torproject.org-keyring torbrowser-launcher -y
+
+# CREATE OSINT DIRECTORY
+
+cd ~
+mkdir -p /apps
+cd apps
+
+# INSTALL PIP3
+sudo apt install python3-pip -y
+
+# INSTALL WHOIS
+sudo apt install whois -y
+
+# INSTALL NMAP
+sudo apt install nmap -y
+
+# INSTALL THEHARVESTER
+# https://github.com/laramies/theHarvester
+
+git clone https://github.com/laramies/theHarvester.git
+cd theHarvester
+pip3 install -r requirements.txt
+
+# INSTALL SUBLIST3R
+# https://github.com/aboul3la/Sublist3r
+
+cd ~/apps
+git clone https://github.com/aboul3la/Sublist3r.git
+cd Sublist3r
+pip3 install -r requirements.txt
+
+# INSTALL SPIDERFOOT
+# https://github.com/smicallef/spiderfoot
+
+cd ~/apps
+git clone https://github.com/smicallef/spiderfoot.git
+cd spiderfoot
+pip3 install -r requirements.txt
+#python3 ./sf.py -l 127.0.0.1:5001
+
+# INSTALL DNSTWIST
+# https://github.com/elceef/dnstwist
+
+cd ~/apps
+git clone https://github.com/elceef/dnstwist.git
+cd dnstwist
+sudo apt-get install libgeoip-dev -y
+pip3 install -r requirements.txt
+
