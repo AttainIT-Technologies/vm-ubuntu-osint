@@ -9,10 +9,12 @@
 # SCRIPT DEVELOPMENT IN PROGRESS
 ################################
 
-# INSTALL PACKAGES
+# INSTALL COMMON PACKAGES
 
 sudo apt install curl -y
 sudo apt install jq -y
+sudo apt-get install openjdk-11-jdk -y
+sudo apt install python3-pip -y
 
 # BASHRC UPDATES
 
@@ -22,6 +24,11 @@ echo 'OSINT_BIN=~/bin; export OSINT_BIN' >> ~/.bashrc
 echo 'PATH=$OSINT_BIN:$PATH' >> ~/.bashrc
 echo '# OSINT UPDATES ABOVE' >> ~/.bashrc
 echo '#####################' >> ~/.bashrc
+
+# DISABLE APPORT SERVICE
+
+sudo service apport stop
+sudo sed -i 's/enabled=1/enabled=0/g' /etc/default/apport
 
 # UPDATE UBUNTU GLOBAL SETTINGS
 
@@ -34,6 +41,11 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'no
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.media-handling autorun-x-content-start-app []
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
+
+# DISABLE CONNECTIVITY CHECKING
+echo '[connectivity]' | sudo tee -a /var/lib/NetworkManager/NetworkManager-intern.conf
+echo '.set.enabled=false' | sudo tee -a /var/lib/NetworkManager/NetworkManager-intern.conf
+sudo systemctl restart NetworkManager.service 
 
 # INSTALL SSH SERVER
 
@@ -123,12 +135,6 @@ cd ~
 mkdir -p /apps
 cd apps
 
-# INSTALL JAVA
-sudo apt-get install openjdk-11-jdk -y
-
-# INSTALL PIP3
-sudo apt install python3-pip -y
-
 # INSTALL WHOIS
 sudo apt install whois -y
 
@@ -137,6 +143,12 @@ sudo apt install nmap -y
 
 # INSTALL DMITRY
 sudo apt-get install dmitry
+
+# INSTALL HTTRACK
+sudo apt install httrack webhttrack -y
+
+# INSTALL KEEPASS
+sudo apt-get install keepassxc -y
 
 # INSTALL THEHARVESTER
 # https://github.com/laramies/theHarvester
