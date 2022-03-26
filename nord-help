@@ -76,7 +76,7 @@ msg "    nordvpn groups"
 msg "    nordvpn countries"
 msg "    nordvpn cities [country via tab completion]"
 msg "    nordvpn connect [country] -g double_vpn"
-msg "       double VPN with first country hop set to [country]
+msg "       double VPN with first country hop set to [country]"
 msg ""
 
 msg "${RED}Connect${NOFORMAT}"
