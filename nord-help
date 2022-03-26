@@ -62,10 +62,28 @@ parse_params() {
 parse_params "$@"
 setup_colors
 
+msg ""
 msg "${RED}Connection Status${NOFORMAT}"
 msg "    nordvpn status"
 msg ""
 
-msg "${RED}Connections${NOFORMAT}"
+msg "${RED}Login${NOFORMAT}"
+msg "    nordvpn login"
+msg ""
+
+msg "${RED}Find Hosts${NOFORMAT}"
+msg "    nordvpn groups"
+msg "    nordvpn countries"
+msg "    nordvpn cities [country via tab completion]"
+msg ""
+
+msg "${RED}Connect${NOFORMAT}"
 msg "    nordvpn connect"
+msg "    nordvpn [city]"
+msg "    nordvpn [country] [city]"
+msg "    nordvpn --group [group]"
+msg ""
+
+msg "${RED}Disconnect${NOFORMAT}"
 msg "    nordvpn disconnect"
+msg ""
